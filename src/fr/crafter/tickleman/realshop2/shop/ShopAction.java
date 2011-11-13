@@ -134,6 +134,7 @@ public class ShopAction
 						);
 					} else {
 						// player enters another player's shop
+                        // TODO +money
 						player.sendMessage(
 							RealColor.message
 							+ plugin.tr("Welcome into +owner's shop +name. You've got +money in your pocket")
@@ -178,7 +179,7 @@ public class ShopAction
 	{
 		if (playerName.equals("")) {
 			player.sendMessage(
-				RealColor.cancel + "/rshop help player"
+				RealColor.cancel + "/rshop give player"
 				+ RealColor.message + " : " + plugin.tr("player name is missing")
 			);
 		} else {
@@ -200,6 +201,7 @@ public class ShopAction
 	) {
 		itemTypeList.addRemoveChain(chain);
 		plugin.getShopList().save();
+        // TODO +items
 		player.sendMessage(
 			RealColor.message + plugin.tr("Now clients can " + what + " +items")
 			.replace("+items",
