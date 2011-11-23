@@ -134,7 +134,6 @@ public class ShopAction
 						);
 					} else {
 						// player enters another player's shop
-                        // TODO +money
 						player.sendMessage(
 							RealColor.message
 							+ plugin.tr("Welcome into +owner's shop +name. You've got +money in your pocket")
