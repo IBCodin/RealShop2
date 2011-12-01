@@ -11,6 +11,7 @@ import fr.crafter.tickleman.realeconomy.RealEconomy;
 import fr.crafter.tickleman.realeconomy.RealEconomyCommand;
 import fr.crafter.tickleman.realplugin.RealPlugin;
 import fr.crafter.tickleman.realplugin.RealColor;
+import fr.crafter.tickleman.realplugin.RealStats;
 import fr.crafter.tickleman.realshop2.price.ItemPriceList;
 import fr.crafter.tickleman.realshop2.shop.PlayerChestList;
 import fr.crafter.tickleman.realshop2.shop.PlayerShopList;
@@ -117,6 +118,7 @@ public class RealShop2Plugin extends RealPlugin
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvent(Event.Type.BLOCK_BREAK,     blockListener,     Event.Priority.Monitor, this);
 		pm.registerEvent(Event.Type.BLOCK_DAMAGE,    blockListener,     Event.Priority.Monitor, this);
+		pm.registerEvent(Event.Type.BLOCK_PLACE,     blockListener,     Event.Priority.Normal,  this);
 		pm.registerEvent(Event.Type.CUSTOM_EVENT,    inventoryListener, Event.Priority.Normal,  this);
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener,    Priority.Normal,        this);
 		pm.registerEvent(Event.Type.PLAYER_LOGIN,    playerListener,    Priority.Normal,        this);
@@ -128,7 +130,9 @@ public class RealShop2Plugin extends RealPlugin
 		shopList     = new ShopList(this).load();
 		this.economy = new RealEconomy(this);
 		// check this out
-		//System.out.println("ALL RECIPES :\n" + RealRecipe.dumpAllRecipes());
+		//System.out.println("ALL RECIPES :");
+		//RealRecipe.dumpAllRecipes();
+		RealStats.call(this, "use");
 	}
 
 	//------------------------------------------------------------------------------- opHasPermission

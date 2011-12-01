@@ -89,26 +89,24 @@ public class RealRecipe
 	}
 
 	//-------------------------------------------------------------------------------- dumpAllRecipes
-	public static String dumpAllRecipes()
+	public static void dumpAllRecipes()
 	{
-		String dump = "";
 		for (int i = 1; i <= 2266; i++) {
 			if (Item.byId[i] != null) {
-				for (RealRecipe recipe : getItemRecipes(new ItemType(Item.byId[i]))) {
-					dump += i + " : " + recipe.toNamedString() + "\n";
+				for (RealRecipe recipe : getItemRecipes(new RealItemType(Item.byId[i]))) {
+					System.out.println("RECIPE " + i + " : " + recipe.toNamedString());
 				}
 			}
 			if (i == 121) i = 255;
 			if (i == 383) i = 2255;
 		}
-		return dump;
 	}
 
 	//-------------------------------------------------------------------------------- getItemRecipes
 	/**
 	 * Return a set of possible recipes for given item type
 	 */
-	public static Set<RealRecipe> getItemRecipes(ItemType itemType)
+	public static Set<RealRecipe> getItemRecipes(RealItemType itemType)
 	{
 		Set<RealRecipe> itemRecipes = new HashSet<RealRecipe>();
 		for (Object recipe : CraftingManager.getInstance().b()) {
